@@ -1,0 +1,40 @@
+<!doctype html><html lang="it"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Inventario GUG</title>
+<meta name="theme-color" content="#070914"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GUG"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icon-180.png"><link rel="stylesheet" href="style.css">
+</head><body>
+<div class="app">
+<header class="hero">
+  <img src="assets/logo-gug.png" class="logo" alt="GUG logo">
+  <div><h1>Inventario GUG</h1><p>Magazzino eventi · veloce · offline · CSV</p></div>
+</header>
+<main>
+<section class="stats">
+  <article><b id="statProducts">0</b><span>prodotti</span></article>
+  <article><b id="statQty">0</b><span>pezzi totali</span></article>
+  <article><b id="statValue">0 €</b><span>valore</span></article>
+</section>
+<section class="toolbar">
+  <input id="search" placeholder="Cerca prodotto, categoria, posizione...">
+  <select id="categoryFilter"><option value="">Tutte le categorie</option></select>
+</section>
+<section id="list" class="list"></section>
+</main>
+<nav class="bottom">
+  <button id="exportBtn">Esporta CSV</button><button id="importBtn">Importa CSV</button><button id="backupBtn">Backup</button><button id="resetBtn">Reset</button>
+</nav>
+<button class="fab" id="addBtn">+ Prodotto</button>
+</div>
+<input type="file" id="importFile" accept=".csv" hidden>
+<dialog id="modal"><form method="dialog" class="sheet"><div class="sheetTop"><h2 id="modalTitle">Nuovo prodotto</h2><button class="x" value="cancel">×</button></div>
+<input type="hidden" id="editId">
+<label>Nome prodotto<input id="name" required placeholder="Es. Birra Moretti 33cl"></label>
+<label>Categoria<input id="category" list="catList" placeholder="Bevande, Food, Pulizie..."></label><datalist id="catList"><option>Bevande</option><option>Food</option><option>Materiale</option><option>Pulizie</option><option>Altro</option></datalist>
+<div class="grid2"><label>Quantità<input id="qty" type="number" step="1" value="0"></label><label>Costo unitario €<input id="price" type="number" step="0.01" value="0"></label></div>
+<label>Posizione<input id="place" placeholder="Es. Cantina, frigo, box"></label>
+<label>Fornitore<input id="supplier" placeholder="Es. Coop, Metro..."></label>
+<label>Note<textarea id="notes" rows="3" placeholder="Dettagli utili"></textarea></label>
+<div class="actions"><button type="button" id="deleteBtn" class="danger">Elimina</button><button id="saveBtn" class="primary" value="default">Salva</button></div>
+</form></dialog>
+<script src="app.js"></script></body></html>
